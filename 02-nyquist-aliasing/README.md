@@ -1,25 +1,12 @@
-# NMR Concepts Visualized
-
-> **See the signal. Understand the math.**
-
-![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square\&logo=python\&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-2ea44f?style=flat-square)
-![NMR](https://img.shields.io/badge/NMR-DSP-7c3aed?style=flat-square)
-![nmrx.ir](https://img.shields.io/badge/Built_alongside-nmrx.ir-00A693?style=flat-square)
-
-Python animations for **NMR, DSP, and computational signal analysis** — built to make the mathematics visible.
-
----
-
-## 🚗 02 — Nyquist Aliasing
-
-### The Wagon Wheel Effect
+# 🚗 02 — Nyquist Aliasing: The Wagon Wheel Effect
 
 > **Why can a wheel spin forward… while your eyes see it moving backward?**
 
-![Nyquist Aliasing — Wagon Wheel Effect](02-nyquist-aliasing/nyquist_wheel.gif)
+![Wagon Wheel Aliasing Animation](nyquist_wheel.gif)
 
-**🎬 Watch the video → [Wagon Wheel Effect — Nyquist Aliasing](VIDEO_LINK_HERE)**
+**🎬 Watch the full video → [Wagon Wheel Effect — Nyquist Aliasing](VIDEO_LINK_HERE)**
+
+### 🎯 One visual. One illusion. One fundamental DSP concept.
 
 A car wheel is rotating **forward**.
 
@@ -29,7 +16,7 @@ Then something strange happens:
 
 Nothing about the wheel changed.
 
-**The sampling did.**
+The **sampling** did.
 
 This is the **Nyquist aliasing effect** — the same mathematical phenomenon that can make an NMR signal appear at the **wrong frequency**.
 
