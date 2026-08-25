@@ -1,62 +1,164 @@
-# nmr-concepts-visualized
+# NMR Concepts Visualized
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Posts](https://img.shields.io/badge/Animations-1-orange?style=flat-square)
-![nmrx.ir](https://img.shields.io/badge/Built_alongside-nmrx.ir-purple?style=flat-square)
+> **Making NMR signal processing visible.**
 
-Python animations for NMR and DSP concepts — built to make the math visible.
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square\&logo=python\&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-2ea44f?style=flat-square)
+![Animations](https://img.shields.io/badge/Animations-1-orange?style=flat-square)
+![NMR](https://img.shields.io/badge/NMR-DSP-7c3aed?style=flat-square)
 
-Each animation targets a specific phenomenon: aliasing, Fourier transform,
-phase correction, baseline drift. The goal is not illustration for its own sake
-but understanding the signal-level mechanics that determine whether an NMR
-spectrum is trustworthy or not.
+**NMR × DSP × Visual Thinking**
 
-Each folder is self-contained. Download only what you need.
+This project turns the signal-processing concepts behind NMR into short,
+self-contained Python animations.
+
+Not just pictures.
+
+**The goal is to make the mathematics visible.**
 
 ---
 
-## Animations
+## 🎬 Animations
 
-### 02-1 — Nyquist Aliasing: Wagon Wheel Effect
+### 02 — Nyquist Aliasing
+
+**The Wagon Wheel Effect**
 
 ![Nyquist Aliasing](02-nyquist-aliasing/nyquist_wheel.gif)
 
-A car wheel spinning forward — but appearing to go backward.
-The same math that places NMR peaks in the wrong position in the spectrum.
+A wheel is rotating forward.
 
-→ [Code + full breakdown](./02-nyquist-aliasing/)
+But at the wrong sampling rate, it appears to rotate **backward**.
 
----
+That isn't an optical trick.
 
-## Background
+It's **aliasing** — the same phenomenon that can make an NMR frequency
+appear at the wrong position in a spectrum.
 
-These animations grew out of building [nmrx.ir](https://nmrx.ir) — an
-open-source NMR analysis tool — and working through the signal processing
-theory behind functions I was already using in code: autophase, baseline
-correction, peak fitting. At some point the math became clearer through
-animation than through equations alone.
+**→ [Explore the animation & mathematics](./02-nyquist-aliasing/)**
 
-The series covers the DSP foundations of NMR: sampling theory, Fourier
-analysis, windowing, filtering, phase and baseline correction — and how
-each one affects what you see (or misread) in the spectrum.
+**▶ [Watch the demo](VIDEO_LINK_HERE)**
 
 ---
 
-## Requirements
+## 🧠 Why this project?
 
-Each folder has its own README with exact dependencies.
-Common base:
+NMR processing is full of concepts that are mathematically simple but
+difficult to visualize:
+
+* Sampling & Nyquist limits
+* Fourier transformation
+* Window functions
+* Filtering
+* Phase correction
+* Baseline distortion
+* Frequency-domain artifacts
+
+Equations describe these effects.
+
+**Animations let you see them happen.**
+
+The goal is to build an intuition for what is happening at the
+**signal level** — before it becomes a peak, a spectrum, or an artifact.
+
+---
+
+## 🧪 From code to understanding
+
+The project grew out of work on **[nmrx.ir](https://nmrx.ir)**,
+an open-source NMR analysis platform.
+
+While implementing functions such as:
+
+```text
+Autophasing
+Baseline correction
+Peak detection
+Peak fitting
+Fourier processing
+```
+
+the underlying DSP became increasingly important.
+
+Some concepts were easier to understand by **watching the signal change**
+than by reading another equation.
+
+That's where this project started.
+
+---
+
+## 🗂️ Project structure
+
+Each animation is intentionally self-contained:
+
+```text
+nmr-concepts-visualized/
+│
+├── 02-nyquist-aliasing/
+│   ├── nyquist_car_v4.py
+│   ├── nyquist_wheel.gif
+│   └── README.md
+│
+└── README.md
+```
+
+You can explore or run an individual concept without needing the rest
+of the repository.
+
+---
+
+## ⚙️ Requirements
+
+Most animations use:
 
 ```bash
 pip install matplotlib numpy pillow
 ```
 
+Each folder contains its own README with the exact dependencies and
+instructions required for that animation.
+
 ---
 
-## Author
+## 🔬 The bigger picture
 
-Seyyed Mostafa Moosavi — Chemist with a focus on NMR signal processing and
-chemoinformatics. Building nmrx.ir as an open-source NMR analysis platform.
+This is a growing visual library for the DSP foundations of NMR.
+
+```text
+Sampling
+   ↓
+Fourier Transform
+   ↓
+Windowing
+   ↓
+Filtering
+   ↓
+Phase
+   ↓
+Baseline
+   ↓
+Peak Detection
+   ↓
+Quantitative NMR
+```
+
+The long-term goal is simple:
+
+> **Make the signal-processing mechanics of NMR intuitive enough to see
+> before you calculate them.**
+
+---
+
+## 👨‍🔬 Author
+
+**Seyyed Mostafa Moosavi**
+
+Chemist focused on **NMR signal processing and chemoinformatics**.
+
+Building **[nmrx.ir](https://nmrx.ir)** as an open-source NMR analysis platform.
 
 [GitHub](https://github.com/HHo2050) · [nmrx.ir](https://nmrx.ir)
+
+---
+
+### Built with Python · NMR · DSP · Curiosity
