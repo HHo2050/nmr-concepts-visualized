@@ -4,177 +4,116 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square\&logo=python\&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-2ea44f?style=flat-square)
-![Animations](https://img.shields.io/badge/Visualizations-Growing-orange?style=flat-square)
+![Visualizations](https://img.shields.io/badge/Visualizations-Growing-orange?style=flat-square)
 ![NMR](https://img.shields.io/badge/NMR-DSP-7c3aed?style=flat-square)
+![nmrx.ir](https://img.shields.io/badge/Built_alongside-nmrx.ir-00A693?style=flat-square)
 
-**NMR × DSP × Computational Analysis**
+Python visualizations for **NMR, digital signal processing, and computational chemical data analysis** — built to make complex concepts easier to see, understand, and communicate.
 
-A growing collection of Python animations that make the mathematics and
-signal-level mechanics behind **NMR data processing** visible.
+This project explores the computational foundations behind modern NMR analysis through reproducible visual experiments.
 
-Not illustration for its own sake.
+The focus is not animation for its own sake.
 
-**The goal is understanding.**
-
----
-
-## 🎬 Visual Library
-
-Some NMR and DSP concepts are difficult to understand from equations alone.
-
-This project turns those concepts into short, visual experiments — showing
-what actually happens to a signal when it is sampled, transformed, processed,
-or misinterpreted.
-
-A single concept may be explored through **multiple visualizations**, each
-showing a different side of the same underlying mechanism.
-
-The library is intentionally open-ended.
-
-New visualizations will be added as interesting concepts, problems, and
-connections emerge across **NMR, DSP, and computational analysis**.
-
-> **No fixed curriculum. No filler. Just useful ideas made visual.**
+**It is about making the underlying signal, mathematics, and computational reasoning visible.**
 
 ---
 
-## 🧪 Current Visualizations
+## 🎬 Visualizations
 
-### 01 — Nyquist Aliasing
+The repository is a growing collection of self-contained visualizations covering concepts relevant to:
 
-#### 🌊 Frequency Aliasing
+* **NMR signal acquisition and processing**
+* **Digital signal processing**
+* **Fourier analysis**
+* **Sampling and frequency-domain behavior**
+* **Signal transformations and artifacts**
+* **Computational analysis of chemical data**
+* **Machine learning concepts relevant to scientific data**
 
-A simple signal-level demonstration of what happens when a frequency is
-sampled below the Nyquist limit.
+A single concept may be explored through multiple visualizations, allowing the same underlying idea to be understood from different perspectives.
 
-The original signal and its sampled representation reveal how a frequency
-can become indistinguishable from a different, lower-frequency signal.
+### Current examples
 
-**NMR connection:**
-The same principle explains why signals outside the observable bandwidth
-can fold back into the spectrum.
+#### Nyquist Aliasing — Wagon Wheel Effect
 
-→ **[Explore the visualization](./01-nyquist-aliasing/)**
+![Nyquist Aliasing](02-nyquist-aliasing/nyquist_wheel.gif)
 
----
+A visual demonstration of sampling and aliasing — connecting an intuitive physical phenomenon to the mathematics underlying digital signal processing and NMR spectroscopy.
 
-#### 🚗 Wagon Wheel Effect
-
-A wheel rotates forward.
-
-But when viewed through discrete samples, it can appear to rotate backward.
-
-This familiar visual phenomenon is a direct and intuitive demonstration of
-**aliasing**.
-
-The same mathematics appears in NMR when a signal is sampled too slowly and
-its frequency is observed at the wrong position.
-
-→ **[Explore the visualization](./02-nyquist-aliasing/)**
+→ **[Code + full breakdown](./02-nyquist-aliasing/)**
 
 ---
 
-## 🧠 Why Visualize NMR?
+## 🧠 Why this project?
 
-NMR processing contains a lot of mathematics that normally stays hidden
-behind software:
+Scientific computing often hides the most important ideas behind equations, software interfaces, and processed outputs.
 
-* Sampling
-* Fourier transformation
-* Windowing
-* Filtering
-* Phase correction
-* Baseline correction
-* Frequency-domain artifacts
-* Peak detection
-* Quantitative analysis
-
-A spectrum can look perfectly reasonable while the underlying signal
-processing has introduced an artifact.
-
-Understanding **why** something happens is therefore just as important as
-knowing **which button to press**.
-
-This project is an attempt to make those mechanisms visible.
-
----
-
-## 🔬 From Signal to Spectrum
-
-At its core, the project follows the computational path of NMR data:
+In NMR, a spectrum is the result of a computational pipeline:
 
 ```text
-                 NMR Signal
-                     │
-                     ▼
-                 Sampling
-                     │
-                     ▼
-              Digital Signal
-                     │
-                     ▼
-            Signal Processing
-                     │
-                     ▼
-            Fourier Transform
-                     │
-                     ▼
-                  Spectrum
-                     │
-                     ▼
-              Interpretation
+Physical signal
+      ↓
+   Sampling
+      ↓
+ Digital data
+      ↓
+ Signal processing
+      ↓
+ Frequency domain
+      ↓
+   Spectrum
+      ↓
+ Interpretation
 ```
 
-Every step introduces assumptions.
+Each stage contains mathematical assumptions and computational decisions.
 
-Every assumption can affect what we see.
+Understanding those decisions is essential when moving from simply **using analytical software** toward understanding, developing, and validating computational methods.
 
-The animations focus on making those transformations easier to reason about.
+This repository is an attempt to make that reasoning more intuitive.
 
 ---
 
-## ⚠️ When Processing Goes Wrong
+## 🔬 Research Context
 
-Many spectral problems are not caused by the chemistry.
+The project sits within a broader interest in:
 
-They can come from the way the signal was **sampled or processed**.
+**Computational Chemical Data Analysis**
 
-```text
-Sampling
-    │
-    ├── insufficient bandwidth
-    │          ↓
-    │       Aliasing
-    │
-    ├── inappropriate processing
-    │          ↓
-    │       Artifacts
-    │
-    └── distorted signal
-               ↓
-         Misinterpretation
-```
+with a particular focus on:
 
-Understanding these failure modes is particularly important when moving from
-visual inspection toward **quantitative NMR and computational analysis**.
+**NMR × DSP × ML**
+
+and related computational approaches for chemical and scientific data.
+
+The visualizations are intended to complement deeper work in:
+
+* NMR data processing
+* signal processing
+* computational chemistry
+* machine learning for chemical data
+* quantitative analysis
+* reproducible scientific workflows
+
+The goal is to connect **chemical understanding** with **computational methods** rather than treating them as separate disciplines.
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Files & Structure
 
-Each visualization is designed to be as self-contained as possible.
+Each visualization is kept as a self-contained unit so that it can be explored, reproduced, or reused independently.
 
 ```text
 nmr-concepts-visualized/
 │
 ├── 01-...
-│   ├── animation.py
-│   ├── animation.gif
+│   ├── *.py
+│   ├── *.gif
 │   └── README.md
 │
-├── 02-...
-│   ├── animation.py
-│   ├── animation.gif
+├── 02-nyquist-aliasing/
+│   ├── nyquist_car_v4.py
+│   ├── nyquist_wheel.gif
 │   └── README.md
 │
 ├── ...
@@ -182,113 +121,81 @@ nmr-concepts-visualized/
 └── README.md
 ```
 
-A concept may contain **multiple visualizations**.
+The repository will grow organically.
 
-For example:
+The numbering reflects the order in which visualizations are added — **not a fixed curriculum or predetermined publication sequence**.
 
-```text
-Nyquist Aliasing
-├── Frequency-domain / waveform demonstration
-└── Wagon Wheel demonstration
-```
-
-The numbering reflects the order in which material is added.
-
-It is **not a fixed curriculum or publication roadmap**.
-
-That allows the library to grow naturally as new ideas and useful
-visualizations emerge.
+New concepts may be added whenever they provide a useful way to visualize an important idea in NMR, DSP, computational chemistry, or related scientific data analysis.
 
 ---
 
 ## ⚙️ Requirements
 
-Most visualizations use Python with a small set of scientific libraries:
+Each visualization has its own README with the exact dependencies and instructions required to reproduce it.
+
+Common dependencies include:
 
 ```bash
 pip install matplotlib numpy pillow
 ```
 
-Individual directories may have additional dependencies.
+---
 
-Check the `README.md` inside each visualization for its exact requirements
-and execution instructions.
+## 🧪 Reproducibility
+
+The visualizations are designed to be generated directly from Python rather than being static illustrations.
+
+Where applicable, each folder contains:
+
+* source code
+* generated visualization
+* explanation of the underlying concept
+* dependencies
+* reproduction instructions
+
+The aim is to keep the relationship between **concept → code → visualization** transparent.
 
 ---
 
-## ▶️ Running a Visualization
+## 🌐 Origin
 
-Enter the directory of the visualization you want to explore:
+These visualizations grew out of work on **[nmrx.ir](https://nmrx.ir)**, an open-source NMR analysis platform.
 
-```bash
-cd <visualization-directory>
+While working with NMR processing and computational analysis, concepts such as Fourier transformation, phase correction, baseline correction, peak analysis, and signal processing repeatedly raised the same question:
+
+**What is actually happening to the data underneath the software interface?**
+
+Visualization became a useful way to answer that question.
+
+This repository grew from that process.
+
+---
+
+## 🧭 Broader Direction
+
+This project is part of a broader research-oriented path toward **computational analysis of chemical data**.
+
+The central intersection is:
+
+```text
+          Chemistry
+              │
+              ▼
+             NMR
+              │
+        ┌─────┴─────┐
+        ▼           ▼
+       DSP          ML
+        │           │
+        └─────┬─────┘
+              ▼
+ Computational Chemical
+       Data Analysis
 ```
 
-Install its dependencies and run the provided Python script:
+The emphasis is on building practical understanding across the full chain:
 
-```bash
-python <script>.py
-```
-
-The generated animation will be saved according to the configuration
-specified by that visualization.
-
----
-
-## 🎯 Design Philosophy
-
-### 1. Make the invisible visible
-
-Signal processing often involves transformations that are mathematically
-obvious but visually abstract.
-
-Animations expose those transformations.
-
-### 2. Start with intuition
-
-The viewer should understand the phenomenon visually before being asked to
-follow the mathematics.
-
-### 3. Keep the mathematics honest
-
-The visual explanation should simplify the concept — **not distort it**.
-
-### 4. Connect everything back to NMR
-
-These are not generic DSP animations.
-
-The purpose is to understand the signal-processing mechanisms that ultimately
-affect NMR data and spectral interpretation.
-
----
-
-## 🌐 Why This Exists
-
-The project grew out of work on **[nmrx.ir](https://nmrx.ir)**, an open-source
-NMR analysis platform.
-
-While working with functions such as Fourier processing, phase correction,
-baseline correction, peak detection, and quantitative analysis, it became
-clear that many of the underlying concepts are easier to understand when
-they can be **seen happening**.
-
-This repository is a companion visual layer to that work.
-
----
-
-## 🔭 Bigger Picture
-
-The project sits at the intersection of:
-
-**NMR × DSP × Computational Analysis × Machine Learning**
-
-with a particular interest in understanding how signal-level information
-propagates through the computational pipeline.
-
-The long-term direction is not simply to create more animations.
-
-It is to build a visual intuition for the computational foundations that
-support modern NMR analysis.
+**chemical problem → scientific data → signal processing → computational analysis → interpretable result**
 
 ---
 
@@ -296,11 +203,11 @@ support modern NMR analysis.
 
 **Seyyed Mostafa Moosavi**
 
-Chemist focused on **NMR signal processing and chemoinformatics**.
+Chemist focused on **NMR signal processing, computational chemical data analysis, and chemoinformatics**.
 
 Building **[nmrx.ir](https://nmrx.ir)** as an open-source NMR analysis platform.
 
-**[GitHub](https://github.com/HHo2050)** · **[nmrx.ir](https://nmrx.ir)**
+**[GitHub](https://github.com/HHo2050)** · **[LinkedIn](https://www.linkedin.com/in/mostafamousavi-nmrx/)** · **[nmrx.ir](https://nmrx.ir)**
 
 ---
 
@@ -310,6 +217,6 @@ This project is released under the **MIT License**.
 
 ---
 
-### Built with Python · NMR · DSP · Curiosity
+### Built with Python · NMR · DSP · ML · Scientific Computing
 
 > **See the signal. Understand the math.**
