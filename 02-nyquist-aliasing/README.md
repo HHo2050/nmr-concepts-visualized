@@ -1,102 +1,182 @@
-\# 02 — Nyquist Aliasing: Wagon Wheel Effect
+# 🚗 02 — Nyquist Aliasing: The Wagon Wheel Effect
 
+> **Why can a wheel spin forward… while your eyes see it moving backward?**
 
+![Wagon Wheel Aliasing Animation](nyquist_aliasing.gif)
 
-\## What this animation shows
+### 🎯 One visual. One illusion. One fundamental DSP concept.
 
+A car wheel is rotating **forward**.
 
+Then, as the sampling rate changes, something strange happens:
 
-A car wheel spinning forward — but appearing to go backward.
+**the wheel appears to rotate backward.**
 
-This is not a visual trick. It is aliasing: the same mathematical
+Nothing about the wheel changed.
 
-phenomenon that places NMR peaks in the wrong position in the spectrum.
+The **sampling** did.
 
+This is the **Nyquist aliasing effect** — the same mathematical phenomenon that can make an NMR signal appear at the **wrong frequency**.
 
+---
 
-\## Physics of the animation
+## 🧠 What you're seeing
 
+The wheel has **6 spokes**, so identical visual patterns repeat every:
 
+**60°**
 
-The wheel has 6 spokes (spoke period = 60°/frame).
+When the wheel rotates slowly enough, every frame correctly represents its motion.
 
+But when the rotation becomes too fast relative to the sampling rate, the next frame can look as if the wheel has moved **slightly backward**.
 
+The motion has been **aliased**.
 
-| Phase | True rotation | Displayed rotation | Perceived direction |
+|                | True motion | Sampled motion | What we see  |
+| -------------- | ----------: | -------------: | ------------ |
+| 🟢 **TRUE**    |  −20°/frame |     −20°/frame | Forward      |
+| 🔴 **ALIASED** |  −52°/frame |      +8°/frame | **Backward** |
 
-|---|---|---|---|
+The animation makes the invisible mathematics visible.
 
-| A — TRUE | −20°/frame (CW) | −20°/frame | Forward ✓ |
+---
 
-| B — ALIASED | −52°/frame (CW) | +8° to +14°/frame (CCW) | Backward ✗ |
+## 📐 The mathematics
 
+Aliasing can be expressed as:
 
+```text
+alias = true − round(true / period) × period
+```
 
-Alias formula:
+For the aliased case:
 
-&#x20;   alias = true − round(true / spoke\_period) × spoke\_period
+```text
+alias = −52 − round(−52 / 60) × 60
+      = −52 − (−60)
+      = +8°/frame
+```
 
-&#x20;   alias = −52 − (−60) = +8°/frame → appears to rotate backward
+The wheel is **actually moving −52°/frame**.
 
+But because the pattern repeats every 60°, the sampled frames are indistinguishable from a wheel moving **+8°/frame**.
 
+### The important idea
 
-\## NMR connection
+> **The samples are real.
+> The interpretation is wrong.**
 
+---
 
+## 🧪 Why this matters in NMR
 
-A fast NMR signal sampled with too long a dwell time folds back
+The wagon-wheel effect isn't just a camera illusion.
 
-into the spectrum — indistinguishable from a real peak.
+It is the same principle behind **frequency aliasing in NMR**.
 
-The fix: increase spectral width (SW), which shortens dwell time (1/SW).
+An NMR signal is sampled at discrete time intervals:
 
+```text
+Continuous signal
+       ↓
+   Sampling
+       ↓
+Discrete points
+       ↓
+   FFT / Spectrum
+       ↓
+Observed frequency
+```
 
+If the signal contains frequencies beyond the **Nyquist limit**, those frequencies fold back into the observable spectral range.
 
-\## Output
+A peak can therefore appear at a frequency that is **not its true frequency**.
 
+### 🚗 Wheel → 📡 NMR
 
+| Wagon wheel              | NMR                    |
+| ------------------------ | ---------------------- |
+| Rotation frequency       | Signal frequency       |
+| Camera frames            | NMR samples            |
+| Spoke periodicity        | Sampling periodicity   |
+| Apparent backward motion | Folded/aliased peak    |
+| Increase frame rate      | Increase sampling rate |
 
-\- Resolution: 1200 × 675 px
+---
 
-\- Frame rate: 10 FPS
+## 🔬 The NMR fix
 
-\- Duration: \~22 seconds (7s forward / 3s transition / 9s aliased / 3s end)
+The sampling interval is the **dwell time**:
 
+```text
+Δt = 1 / SW
+```
 
+where **SW** is the spectral width.
 
-\## Requirements
+To reduce aliasing:
 
+> **Increase the spectral width → decrease the dwell time → sample faster.**
 
+The goal is to satisfy the **Nyquist criterion**:
+
+```text
+SW ≥ 2 × highest frequency
+```
+
+---
+
+## 🎬 Animation
+
+**Resolution:** `1200 × 675 px`
+**Frame rate:** `10 FPS`
+**Duration:** `~22 s`
+
+```text
+00–07 s   →   True forward rotation
+07–10 s   →   Transition
+10–19 s   →   Aliased / apparent backward rotation
+19–22 s   →   End
+```
+
+---
+
+## ⚙️ Run it yourself
+
+### Install
 
 ```bash
-
 pip install matplotlib numpy pillow
-
 ```
 
-
-
-\## How to run
-
-
+### Run
 
 ```bash
-
-python nyquist\_car\_v4.py
-
+python nyquist_car_v4.py
 ```
 
+The GIF is saved to the path defined by `out_path` at the bottom of the script.
 
+Change that path if you want to save the animation elsewhere.
 
-Output GIF saves to the path defined in `out\_path` at the bottom of the script.
+---
 
-Change it to your preferred directory before running.
+## 💡 The takeaway
 
+> **Aliasing doesn't change the signal.
+> It changes what the samples allow you to see.**
 
+And that's why a wheel can appear to spin backward —
 
-\## Part of
+and why an NMR peak can appear in the wrong place.
 
-\[nmr-concepts-visualized](https://github.com/HHo2050/nmr-concepts-visualized)
+---
 
-— visualizing NMR and DSP concepts with Python.
+### Part of
 
+**[nmr-concepts-visualized](https://github.com/HHo2050/nmr-concepts-visualized)**
+
+Visualizing **NMR, DSP, and signal-processing concepts** through Python animations.
+
+**02 / Nyquist Aliasing**
+`NMR × DSP × Visual Thinking`
